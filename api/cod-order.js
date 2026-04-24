@@ -3,7 +3,7 @@ const fetch = require('node-fetch');
 const DROPI_API_URL = 'https://app.dropi.ec/api/v1/orders';
 const DROPI_TOKEN = process.env.DROPI_TOKEN;
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   // Permitir CORS
   res.setHeader('Access-Control-Allow-Credentials', 'true');
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -53,23 +53,23 @@ export default async function handler(req, res) {
 
     if (!response.ok) {
       const error = await response.json();
-      return res.status(response.status).json({ 
-        error: error.message || 'Error en Dropi' 
+      return res.status(response.status).json({
+        error: error.message || 'Error en Dropi'
       });
     }
 
     const result = await response.json();
 
-    return res.status(200).json({ 
+    return res.status(200).json({
       message: 'Pedido creado exitosamente',
-      orderId: result.id 
+      orderId: result.id
     });
 
   } catch (error) {
     console.error('Error:', error);
-    return res.status(500).json({ 
+    return res.status(500).json({
       error: 'Error del servidor',
-      message: error.message 
+      message: error.message
     });
   }
-}
+};
