@@ -1,0 +1,13 @@
+{
+  "name": "zouday-cod-backend",
+  "version": "1.0.0",
+  "description": "Backend para formulario COD con Dropi",
+  "main": "api/cod-order.js",
+  "scripts": {
+    "dev": "vercel dev",
+    "deploy": "vercel"
+  },
+  "dependencies": {
+    "node-fetch": "^2.6.7"
+  }
+}
